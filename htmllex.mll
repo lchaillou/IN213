@@ -85,6 +85,7 @@ rule lex = parse
         (* | _ -> IDENT(lxm)  *)
         }
   | ";"   { SEMICOLON }
+  | "+" {PLUS}
   | '"'   { reset_string_buffer();
             in_string lexbuf;
             STRING (get_stored_string()) }
