@@ -1,10 +1,10 @@
 # Compilateurs
-OCC = ocamlopt
+OCC = ocamlopt -unsafe-string
 OCL = ocamllex
 OCY = ocamlyacc
 
 # Fichiers compilés, à produire pour fabriquer l'exécutable
-OBJS = htmllex.cmx htmlast.cmx htmlparse.cmx htmlloop.cmx
+OBJS = htmllex.cmx htmlast.cmx htmlparse.cmx htmlsem.cmx htmlloop.cmx
 
 htmlloop: $(OBJS)
 	$(OCC) -o $@ $(OBJS)
@@ -15,7 +15,6 @@ clean::
 	/bin/rm -f *~ *.cmo *.cmx *.o *.cmi *.cmt *.cmti \
                    htmlparse.ml htmlparse.mli htmllex.ml htmlloop
 
-
 # Les dépendances
 htmlloop.cmx: htmlast.cmi htmlparse.cmi htmllex.cmi
 
@@ -24,6 +23,8 @@ htmllex.cmx: htmlparse.cmi
 htmlparse.cmi: htmlast.cmi
 
 htmlparse.cmx: htmlast.cmi
+
+htmlsem.cmx: htmlast.cmi
 
 htmlparse.mli: htmlparse.ml
 
