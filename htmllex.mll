@@ -71,18 +71,20 @@ rule lex = parse
       { INT(int_of_string lxm) }
   | [ 'A'-'Z' 'a'-'z' ] [ 'A'-'Z' 'a'-'z' ]* as lxm
       { match lxm with
-          "BEGh1" -> BEGH1
-        | "BEGh2" -> BEGH2
-        | "BEGp" -> BEGP
-        | "BEGdiv" -> BEGDIV
-        | "BEGstrong" -> BEGSTRONG
-        | "ENDh1" -> ENDH1
-        | "ENDh2" -> ENDH2
-        | "ENDp" -> ENDP
-        | "ENDdiv" -> ENDDIV
-        | "ENDstrong" -> ENDSTRONG
-        | "br" -> BR
-        | _ -> IDENT(lxm) }
+          "BEGTITRE" -> BEGH1
+        | "BEGSTITRE" -> BEGH2
+        | "BEGP" -> BEGP
+        | "BEGDIV" -> BEGDIV
+        | "BEGSTRONG" -> BEGSTRONG
+        | "ENDTITRE" -> ENDH1
+        | "ENDSTITRE" -> ENDH2
+        | "ENDP" -> ENDP
+        | "ENDDIV" -> ENDDIV
+        | "ENDSTRONG" -> ENDSTRONG
+        | "BR" -> BR
+        (* | _ -> IDENT(lxm)  *)
+        }
+  | ";"   { SEMICOLON }
   | '"'   { reset_string_buffer();
             in_string lexbuf;
             STRING (get_stored_string()) }

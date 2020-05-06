@@ -1,23 +1,8 @@
 %{
   open Htmlast;;
 
-  let rec mkfun params expr = match params with
-  | [] -> expr
-  | p :: prms -> EFun(p, mkfun prms expr)
-  ;;
 %}
 
-/* %token <int> INT
-%token <string> IDENT
-%token TRUE FALSE
-%token <string> STRING
-%token PLUS MINUS MULT DIV EQUAL GREATER SMALLER GREATEREQUAL SMALLEREQUAL
-%token LPAR RPAR SEMICOLON
-%token LET REC IN FUN ARROW
-%token IF THEN ELSE
-%left EQUAL GREATER SMALLER GREATEREQUAL SMALLEREQUAL
-%left PLUS MINUS
-%left MULT DIV */
 
 %token <int> INT
 %token <string> STRING
@@ -32,27 +17,19 @@
 
 %%
 
-main: expr SEMICOLON { $1 }
-    | SEMICOLON main { $2 }
+main: 
+    | expr SEMICOLON { $1 }
 ;
 
-/* Grammaire ci-dessous a finir */
 
-/* expr:
- INT        { EInt $1 }
- |IDENT      { EIdent $1}
- |LPAR expr RPAR { $2}
- |LET IDENT EQUAL expr IN expr { ELet ($2,$4,$6)}
- |FUN IDENT ARROW expr {EFun ($2, $4)}
-; */
 
 expr:
   INT     { EInt $1}
   |BR      { Ebr}
   |STRING  { Estring $1}
-  |BEGH1 expr ENDH1 { Eh1 $1}
-  |BEGH2 expr ENDH2 { Eh2 $1}
-  |BEGP expr ENDP { Ep $1}
-  |BEGSTRONG expr ENDSTRONG { Estrong $1}
-  |BEGDIV expr ENDDIV { Ediv $1}
+  |BEGH1 expr ENDH1 { Eh1 $2}
+  |BEGH2 expr ENDH2 { Eh2 $2}
+  |BEGP expr ENDP { Ep $2}
+  |BEGSTRONG expr ENDSTRONG { Estrong $2}
+  |BEGDIV expr ENDDIV { Ediv $2}
 

@@ -6,7 +6,7 @@ OCY = ocamlyacc
 # Fichiers compilés, à produire pour fabriquer l'exécutable
 OBJS = htmllex.cmx htmlast.cmx htmlparse.cmx htmlloop.cmx
 
-pcfloop: $(OBJS)
+htmlloop: $(OBJS)
 	$(OCC) -o $@ $(OBJS)
 
 # Les cibles auxiliaires
