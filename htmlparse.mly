@@ -32,5 +32,5 @@ expr:
   |BEGP expr ENDP { Ep $2}
   |BEGSTRONG expr ENDSTRONG { Estrong $2}
   |BEGDIV expr ENDDIV { Ediv $2}
-  |INT PLUS INT {Eplus ($1,$3)}
+  |expr PLUS expr {Eplus ($1,$3)}
 

@@ -51,41 +51,43 @@ let yylen = "\002\000\
 \003\000\003\000\002\000"
 
 let yydefred = "\000\000\
-\000\000\000\000\000\000\004\000\000\000\000\000\000\000\000\000\
+\000\000\000\000\002\000\004\000\000\000\000\000\000\000\000\000\
 \000\000\003\000\011\000\000\000\000\000\000\000\000\000\000\000\
-\000\000\000\000\001\000\010\000\005\000\006\000\007\000\008\000\
-\009\000"
+\000\000\000\000\001\000\005\000\006\000\007\000\008\000\009\000\
+\000\000"
 
 let yydgoto = "\002\000\
 \011\000\012\000"
 
-let yysindex = "\018\000\
-\255\254\000\000\017\255\000\000\255\254\255\254\255\254\255\254\
-\255\254\000\000\000\000\006\255\021\255\018\255\019\255\015\255\
-\014\255\016\255\000\000\000\000\000\000\000\000\000\000\000\000\
-\000\000"
+let yysindex = "\001\000\
+\255\254\000\000\000\000\000\000\255\254\255\254\255\254\255\254\
+\255\254\000\000\000\000\005\255\018\255\003\255\022\255\001\255\
+\016\255\255\254\000\000\000\000\000\000\000\000\000\000\000\000\
+\030\255"
 
 let yyrindex = "\000\000\
-\000\000\000\000\253\254\000\000\000\000\000\000\000\000\000\000\
 \000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
 \000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
-\000\000"
+\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
+\017\255"
 
 let yygindex = "\000\000\
 \000\000\009\000"
 
-let yytablesize = 29
+let yytablesize = 33
 let yytable = "\003\000\
-\004\000\002\000\005\000\002\000\006\000\002\000\007\000\002\000\
-\008\000\002\000\009\000\002\000\010\000\014\000\015\000\016\000\
-\017\000\018\000\001\000\013\000\019\000\020\000\021\000\023\000\
-\024\000\022\000\000\000\000\000\025\000"
+\004\000\001\000\005\000\018\000\006\000\018\000\007\000\018\000\
+\008\000\021\000\009\000\023\000\010\000\013\000\014\000\015\000\
+\016\000\017\000\018\000\019\000\018\000\010\000\020\000\010\000\
+\018\000\010\000\025\000\010\000\024\000\010\000\022\000\010\000\
+\018\000"
 
 let yycheck = "\001\001\
-\002\001\005\001\004\001\007\001\006\001\009\001\008\001\011\001\
-\010\001\013\001\012\001\015\001\014\001\005\000\006\000\007\000\
-\008\000\009\000\001\000\003\001\015\001\001\001\005\001\009\001\
-\011\001\007\001\255\255\255\255\013\001"
+\002\001\001\000\004\001\003\001\006\001\003\001\008\001\003\001\
+\010\001\007\001\012\001\011\001\014\001\005\000\006\000\007\000\
+\008\000\009\000\003\001\015\001\003\001\005\001\005\001\007\001\
+\003\001\009\001\018\000\011\001\013\001\013\001\009\001\015\001\
+\003\001"
 
 let yynames_const = "\
   PLUS\000\
@@ -115,70 +117,70 @@ let yyact = [|
     Obj.repr(
 # 21 "htmlparse.mly"
                      ( _1 )
-# 119 "htmlparse.ml"
+# 121 "htmlparse.ml"
                : Htmlast.expr))
 ; (fun __caml_parser_env ->
     let _1 = (Parsing.peek_val __caml_parser_env 0 : int) in
     Obj.repr(
 # 27 "htmlparse.mly"
           ( EInt _1)
-# 126 "htmlparse.ml"
+# 128 "htmlparse.ml"
                : 'expr))
 ; (fun __caml_parser_env ->
     Obj.repr(
 # 28 "htmlparse.mly"
            ( Ebr)
-# 132 "htmlparse.ml"
+# 134 "htmlparse.ml"
                : 'expr))
 ; (fun __caml_parser_env ->
     let _1 = (Parsing.peek_val __caml_parser_env 0 : string) in
     Obj.repr(
 # 29 "htmlparse.mly"
            ( Estring _1)
-# 139 "htmlparse.ml"
+# 141 "htmlparse.ml"
                : 'expr))
 ; (fun __caml_parser_env ->
     let _2 = (Parsing.peek_val __caml_parser_env 1 : 'expr) in
     Obj.repr(
 # 30 "htmlparse.mly"
                     ( Eh1 _2)
-# 146 "htmlparse.ml"
+# 148 "htmlparse.ml"
                : 'expr))
 ; (fun __caml_parser_env ->
     let _2 = (Parsing.peek_val __caml_parser_env 1 : 'expr) in
     Obj.repr(
 # 31 "htmlparse.mly"
                     ( Eh2 _2)
-# 153 "htmlparse.ml"
+# 155 "htmlparse.ml"
                : 'expr))
 ; (fun __caml_parser_env ->
     let _2 = (Parsing.peek_val __caml_parser_env 1 : 'expr) in
     Obj.repr(
 # 32 "htmlparse.mly"
                   ( Ep _2)
-# 160 "htmlparse.ml"
+# 162 "htmlparse.ml"
                : 'expr))
 ; (fun __caml_parser_env ->
     let _2 = (Parsing.peek_val __caml_parser_env 1 : 'expr) in
     Obj.repr(
 # 33 "htmlparse.mly"
                             ( Estrong _2)
-# 167 "htmlparse.ml"
+# 169 "htmlparse.ml"
                : 'expr))
 ; (fun __caml_parser_env ->
     let _2 = (Parsing.peek_val __caml_parser_env 1 : 'expr) in
     Obj.repr(
 # 34 "htmlparse.mly"
                       ( Ediv _2)
-# 174 "htmlparse.ml"
+# 176 "htmlparse.ml"
                : 'expr))
 ; (fun __caml_parser_env ->
-    let _1 = (Parsing.peek_val __caml_parser_env 2 : int) in
-    let _3 = (Parsing.peek_val __caml_parser_env 0 : int) in
+    let _1 = (Parsing.peek_val __caml_parser_env 2 : 'expr) in
+    let _3 = (Parsing.peek_val __caml_parser_env 0 : 'expr) in
     Obj.repr(
 # 35 "htmlparse.mly"
-                (Eplus (_1,_3))
-# 182 "htmlparse.ml"
+                  (Eplus (_1,_3))
+# 184 "htmlparse.ml"
                : 'expr))
 (* Entry main *)
 ; (fun __caml_parser_env -> raise (Parsing.YYexit (Parsing.peek_val __caml_parser_env 0)))

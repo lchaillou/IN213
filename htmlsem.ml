@@ -3,7 +3,8 @@ open Htmlast;;
 type htmlval =
   | Intval of int
   | Stringval of string
-  | Balval of { name: string; body: expr; env: environment }
+  | Brval
+  | Balval of {balise:string; body: htmlval; env: environment}
 
 and environment = (string * htmlval) list
 ;;
@@ -12,7 +13,8 @@ and environment = (string * htmlval) list
 let rec printval = function
   | Intval n -> Printf.printf "%d" n
   | Stringval s -> Printf.printf "%S" s
-  | Balval _-> Printf.printf "<bal>"
+  | Brval -> Printf.printf "<br>"
+  | Balval b -> Printf.printf "<%S>" b.balise ; printval b.body ; Printf.printf "</%S>" b.balise
 ;;
 
 (* Environnement. *)
@@ -32,6 +34,15 @@ let rec eval e rho =
   match e with
   | EInt n -> Intval n
   | Estring s -> Stringval s
+  | Eplus (e1,e2) -> (
+      match (eval e1 rho, eval e2 rho) with
+      | (Intval n1, Intval n2) -> Intval (n1 + n2)
+  )
+  | Ebr -> Brval
+  | Eh1 (e) -> let e_val = eval e rho in Balval { balise = "h1" ; body = e_val ; env = rho }
+      
+
+
   (* | EIdent v -> lookup v rho
   | EApp (e1, e2) -> (
       match (eval e1 rho, eval e2 rho) with
