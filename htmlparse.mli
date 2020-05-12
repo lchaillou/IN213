@@ -2,6 +2,9 @@ type token =
   | INT of (int)
   | STRING of (string)
   | PLUS
+  | MOINS
+  | DIV
+  | MULT
   | BEGH1
   | ENDH1
   | BEGH2

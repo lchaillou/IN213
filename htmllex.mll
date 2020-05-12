@@ -86,6 +86,9 @@ rule lex = parse
         }
   | ";"   { SEMICOLON }
   | "+" {PLUS}
+  | "-" {MOINS}
+  | "*" {MULT}
+  | "/" {DIV}
   | '"'   { reset_string_buffer();
             in_string lexbuf;
             STRING (get_stored_string()) }

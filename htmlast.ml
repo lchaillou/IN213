@@ -13,6 +13,9 @@ type expr =
   | Estrong of expr
   | Ediv of expr
   | Eplus of ( expr * expr )
+  | Emoins of ( expr * expr )
+  | Emult of ( expr * expr )
+  | Edivis of ( expr * expr )
 ;;
 
 
@@ -26,6 +29,9 @@ let rec print oc = function
   | Estrong (e) -> Printf.fprintf oc "<strong> %a </strong>" print e
   | Ebr -> Printf.fprintf oc "<br>"
   | Eplus (e1,e2) -> Printf.fprintf oc "(%a + %a)" print e1 print e2
+  | Emoins (e1,e2) -> Printf.fprintf oc "(%a - %a)" print e1 print e2
+  | Edivis (e1,e2) -> Printf.fprintf oc "(%a / %a)" print e1 print e2
+  | Emult (e1,e2) -> Printf.fprintf oc "(%a * %a)" print e1 print e2
 
   
 ;;

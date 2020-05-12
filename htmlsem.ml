@@ -38,6 +38,18 @@ let rec eval e rho =
       match (eval e1 rho, eval e2 rho) with
       | (Intval n1, Intval n2) -> Intval (n1 + n2)
   )
+  | Emoins (e1,e2) -> (
+      match (eval e1 rho, eval e2 rho) with
+      | (Intval n1, Intval n2) -> Intval (n1 - n2)
+  )
+  | Emult (e1,e2) -> (
+      match (eval e1 rho, eval e2 rho) with
+      | (Intval n1, Intval n2) -> Intval (n1 * n2)
+  )
+  | Edivis (e1,e2) -> (
+      match (eval e1 rho, eval e2 rho) with
+      | (Intval n1, Intval n2) -> Intval (n1 / n2)
+  )
   | Ebr -> Brval
   | Eh1 (e) -> let e_val = eval e rho in Balval { balise = "h1" ; body = e_val ; env = rho }
   | Eh2 (e) -> let e_val = eval e rho in Balval { balise = "h2" ; body = e_val ; env = rho }

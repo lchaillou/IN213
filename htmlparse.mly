@@ -6,7 +6,7 @@
 
 %token <int> INT
 %token <string> STRING
-%token PLUS
+%token PLUS MOINS DIV MULT
 %token BEGH1 ENDH1 BEGH2 ENDH2 BEGP ENDP BEGSTRONG ENDSTRONG BEGDIV ENDDIV
 %token BR
 %token SEMICOLON
@@ -33,4 +33,7 @@ expr:
   |BEGSTRONG expr ENDSTRONG { Estrong $2}
   |BEGDIV expr ENDDIV { Ediv $2}
   |expr PLUS expr {Eplus ($1,$3)}
+  |expr MOINS expr {Emoins ($1,$3)}
+  |expr DIV expr {Edivis ($1,$3)}
+  |expr MULT expr {Emult ($1,$3)}
 
