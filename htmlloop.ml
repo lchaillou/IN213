@@ -24,11 +24,11 @@ let main() =
   let lexbuf = Lexing.from_channel input_channel in
   while true do
     try
-      let _ = Printf.printf  "> %!" in
+      (* let _ = Printf.printf  "> %!" in *)
       let e = Htmlparse.main Htmllex.lex lexbuf in
-      let _ = Printf.printf "Recognized: " in
+      (* let _ = Printf.printf "Recognized: " in
       let _ = Htmlast.print stdout e in
-      let _ = Printf.fprintf stdout " =\n%!" in
+      let _ = Printf.fprintf stdout " =\n%!" in *)
       let _ = Htmlsem.printval (Htmlsem.eval e) in
       Printf.printf "\n%!"
     with

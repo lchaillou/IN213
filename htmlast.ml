@@ -22,12 +22,12 @@ type expr =
 let rec print oc = function
   | EInt n -> Printf.fprintf oc "%d" n
   | Estring s -> Printf.fprintf oc "\"%s\"" s
-  | Eh1 (e) -> Printf.fprintf oc "<h1> %a </h1>" print e
-  | Eh2 (e) -> Printf.fprintf oc "<h2> %a </h2>" print e
-  | Ep (e) -> Printf.fprintf oc "<p> %a </p>" print e
-  | Ediv (e) -> Printf.fprintf oc "<div> %a </div>" print e
-  | Estrong (e) -> Printf.fprintf oc "<strong> %a </strong>" print e
-  | Ebr -> Printf.fprintf oc "<br>"
+  | Eh1 (e) -> Printf.fprintf oc "BEGTITRE %a ENDTITRE" print e
+  | Eh2 (e) -> Printf.fprintf oc "BEGSTITRE %a ENDSTITRE" print e
+  | Ep (e) -> Printf.fprintf oc "BEGP %a ENDP" print e
+  | Ediv (e) -> Printf.fprintf oc "BEGDIV %a ENDDIV" print e
+  | Estrong (e) -> Printf.fprintf oc "BEGSTRONG %a ENDSTRONG" print e
+  | Ebr -> Printf.fprintf oc "BR"
   | Eplus (e1,e2) -> Printf.fprintf oc "(%a + %a)" print e1 print e2
   | Emoins (e1,e2) -> Printf.fprintf oc "(%a - %a)" print e1 print e2
   | Edivis (e1,e2) -> Printf.fprintf oc "(%a / %a)" print e1 print e2
