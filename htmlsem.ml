@@ -12,9 +12,9 @@ and environment = (string * htmlval) list
 
 let rec printval = function
   | Intval n -> Printf.printf "%d" n
-  | Stringval s -> Printf.printf "%S" s
+  | Stringval s -> Printf.printf "%s" s
   | Brval -> Printf.printf "<br>"
-  | Balval b -> Printf.printf "<%S>" b.balise ; printval b.body ; Printf.printf "</%S>" b.balise
+  | Balval b -> Printf.printf "<%s>" b.balise ; printval b.body ; Printf.printf "</%s>" b.balise
 ;;
 
 (* Environnement. *)
