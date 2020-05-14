@@ -5,6 +5,7 @@ type htmlval =
   | Stringval of string
   | Brval
   | Balval of {balise:string; body: htmlval; env: environment}
+  | Imgval of {src:string; alt:string; env: environment}
 
 and environment = (string * htmlval) list
 ;;
@@ -15,6 +16,7 @@ let rec printval = function
   | Stringval s -> Printf.printf "%s" s
   | Brval -> Printf.printf "<br>"
   | Balval b -> Printf.printf "<%s>" b.balise ; printval b.body ; Printf.printf "</%s>" b.balise
+  | Imgval i -> Printf.printf "<img src=%S alt=%S >" i.src i.alt
 ;;
 
 (* Environnement. *)
@@ -56,6 +58,7 @@ let rec eval e rho =
   | Ep (e) -> let e_val = eval e rho in Balval { balise = "p" ; body = e_val ; env = rho }
   | Ediv (e) -> let e_val = eval e rho in Balval { balise = "div" ; body = e_val ; env = rho }
   | Estrong (e) -> let e_val = eval e rho in Balval { balise = "strong" ; body = e_val ; env = rho }
+  | Eimg (s1, s2) -> Imgval { src = s1; alt = s2 ; env = rho }
 
 ;;
 

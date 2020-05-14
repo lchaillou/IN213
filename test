@@ -1,2 +1,4 @@
 BEGTITRE "hello" ENDTITRE;
 BEGSTITRE "Coucou" ENDSTITRE;
+BEGDIV BEGP "hey !" ENDP ENDDIV;
+IMG "machin.jpg" "machin";

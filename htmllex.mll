@@ -82,6 +82,7 @@ rule lex = parse
         | "ENDDIV" -> ENDDIV
         | "ENDSTRONG" -> ENDSTRONG
         | "BR" -> BR
+        | "IMG" -> IMG
         (* | _ -> IDENT(lxm)  *)
         }
   | ";"   { SEMICOLON }
