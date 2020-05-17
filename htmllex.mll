@@ -83,6 +83,7 @@ rule lex = parse
         | "ENDSTRONG" -> ENDSTRONG
         | "BR" -> BR
         | "IMG" -> IMG
+        | "LINK" -> LINK
         (* | _ -> IDENT(lxm)  *)
         }
   | ";"   { SEMICOLON }

@@ -8,7 +8,7 @@
 %token <string> STRING
 %token PLUS MOINS DIV MULT
 %token BEGH1 ENDH1 BEGH2 ENDH2 BEGP ENDP BEGSTRONG ENDSTRONG BEGDIV ENDDIV
-%token BR IMG
+%token BR IMG LINK
 %token SEMICOLON
 
 
@@ -37,4 +37,5 @@ expr:
   |expr DIV expr {Edivis ($1,$3)}
   |expr MULT expr {Emult ($1,$3)}
   |IMG STRING STRING {Eimg ($2,$3)}
+  |LINK STRING STRING {Elink ($2,$3)}
 
