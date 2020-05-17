@@ -18,6 +18,7 @@ type expr =
   | Edivis of ( expr * expr )
   | Eimg of ( string * string )
   | Elink of ( string * string )
+  | Eseq of (expr * expr )
 ;;
 
 
@@ -36,6 +37,7 @@ let rec print oc = function
   | Emult (e1,e2) -> Printf.fprintf oc "(%a * %a)" print e1 print e2
   | Eimg (s1,s2) -> Printf.fprintf oc "IMG %s %s" s1 s2
   | Elink (s1,s2) -> Printf.fprintf oc "LINK %s %s" s1 s2
+  | Eseq (e1,e2) -> Printf.fprintf oc "%a  %a" print e1 print e2
 
   
 ;;

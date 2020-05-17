@@ -7,6 +7,7 @@ type htmlval =
   | Balval of {balise:string; body: htmlval; env: environment}
   | Imgval of {src:string; alt:string; env: environment}
   | Linkval of {href:string; txt:string; env: environment}
+  | Seqval of (htmlval * htmlval)
 
 and environment = (string * htmlval) list
 ;;
@@ -19,6 +20,7 @@ let rec printval = function
   | Balval b -> Printf.printf "<%s>" b.balise ; printval b.body ; Printf.printf "</%s>" b.balise
   | Imgval i -> Printf.printf "<img src=%S alt=%S >" i.src i.alt
   | Linkval i -> Printf.printf "<a href=%S> %s </a>" i.href i.txt
+  | Seqval (e1, e2) -> printval e1; printval e2
 ;;
 
 (* Environnement. *)
@@ -62,6 +64,7 @@ let rec eval e rho =
   | Estrong (e) -> let e_val = eval e rho in Balval { balise = "strong" ; body = e_val ; env = rho }
   | Eimg (s1, s2) -> Imgval { src = s1; alt = s2 ; env = rho }
   | Elink (s1, s2) -> Linkval { href = s1; txt = s2 ; env = rho }
+  | Eseq (e1, e2) -> let e1_val = eval e1 rho in let e2_val = eval e2 rho in Seqval (e1_val, e2_val)
 
 ;;
 
