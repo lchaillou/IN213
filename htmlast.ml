@@ -12,6 +12,7 @@ type expr =
   | Ep of expr
   | Estrong of expr
   | Ediv of expr
+  | Ebtn of expr
   | Eplus of ( expr * expr )
   | Emoins of ( expr * expr )
   | Emult of ( expr * expr )
@@ -29,6 +30,7 @@ let rec print oc = function
   | Eh2 (e) -> Printf.fprintf oc "BEGSTITRE %a ENDSTITRE" print e
   | Ep (e) -> Printf.fprintf oc "BEGP %a ENDP" print e
   | Ediv (e) -> Printf.fprintf oc "BEGDIV %a ENDDIV" print e
+  | Ebtn (e) -> Printf.fprintf oc "BEGBTN %a ENDBTN" print e
   | Estrong (e) -> Printf.fprintf oc "BEGSTRONG %a ENDSTRONG" print e
   | Ebr -> Printf.fprintf oc "BR"
   | Eplus (e1,e2) -> Printf.fprintf oc "(%a + %a)" print e1 print e2

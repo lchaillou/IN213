@@ -62,6 +62,7 @@ let rec eval e rho =
   | Ep (e) -> let e_val = eval e rho in Balval { balise = "p" ; body = e_val ; env = rho }
   | Ediv (e) -> let e_val = eval e rho in Balval { balise = "div" ; body = e_val ; env = rho }
   | Estrong (e) -> let e_val = eval e rho in Balval { balise = "strong" ; body = e_val ; env = rho }
+  | Ebtn (e) -> let e_val = eval e rho in Balval { balise = "button" ; body = e_val ; env = rho }
   | Eimg (s1, s2) -> Imgval { src = s1; alt = s2 ; env = rho }
   | Elink (s1, s2) -> Linkval { href = s1; txt = s2 ; env = rho }
   | Eseq (e1, e2) -> let e1_val = eval e1 rho in let e2_val = eval e2 rho in Seqval (e1_val, e2_val)

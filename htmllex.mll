@@ -84,7 +84,8 @@ rule lex = parse
         | "BR" -> BR
         | "IMG" -> IMG
         | "LINK" -> LINK
-        (* | _ -> IDENT(lxm)  *)
+        | "BEGBTN" -> BEGBTN
+        | "ENDBTN" -> ENDBTN
         }
   | ";"   { SEMICOLON }
   | "+" {PLUS}
